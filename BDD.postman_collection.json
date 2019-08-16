@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "8e6fe64c-51a0-4f10-bfc8-64968dd815a8",
+		"name": "BDD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "installPostmanBDD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10439bfd-980b-4a4d-8d62-87b28b2b7b22",
+						"exec": [
+							"// \"install\" Postman BDD",
+							"postman.setGlobalVariable('postmanBDD', responseBody);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://bigstickcarpet.com/postman-bdd/dist/postman-bdd.min.js",
+					"protocol": "http",
+					"host": [
+						"bigstickcarpet",
+						"com"
+					],
+					"path": [
+						"postman-bdd",
+						"dist",
+						"postman-bdd.min.js"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mockerserverResponse",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1b95ead4-0416-4a64-b81d-200ad83bb513",
+						"exec": [
+							"eval(globals.postmanBDD);",
+							"",
+							"describe('Testing \"Push values into stack\"', function () {",
+							"\tit('CASE 1: Should respond with statusCode = 200', function () {",
+							"\t\tresponse.should.have.status(200);",
+							"\t});",
+							"\t",
+							"\tit('CASE 2: Should respond with null response', function () {",
+							"\t\tresponse.body.should.be.eql(\"\");",
+							"\t});",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{mock-server}}/runpath.qaautomationtest.com",
+					"protocol": "https",
+					"host": [
+						"{{mock-server}}"
+					],
+					"path": [
+						"runpath.qaautomationtest.com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
