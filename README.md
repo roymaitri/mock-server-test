@@ -6,5 +6,6 @@ Pre-requisites - Postman / node.js and Newman
 * Run it as a collection Runner
 
 ## Steps to execute using command line
+## Changing the README in mock_server_test1 and pushing to Handson_Local
 * Run the following command while in the same folder as the collection and environment files:
 `newman run BDD.postman_collection.json -e postman.postman_environment.json`
